@@ -8,6 +8,7 @@ public interface Game {
     public void setGamePanel(GamePanel gp);
 
     public void initiateObjects();
+
     public void handleTouch(MouseEvent e);
 
     public void handleTouchDragging(MouseEvent e);

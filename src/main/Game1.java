@@ -20,6 +20,7 @@ public class Game1 implements Game{
     private Trash selectedTrash = null;
     private java.awt.Point initialClick;
     private GamePanel gp;
+    public static final String description = "Sort garbage into the appropriate bins (Drag&Drop garbage into bins)";
 
     public Game1() {
         target = trashCount;

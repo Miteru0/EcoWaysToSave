@@ -15,6 +15,7 @@ public class Game2 implements Game{
     private PanelManager pm = PanelManager.INSTANCE;
     private Random random = new Random();
     private int numberOfLightSwitches = 4;
+    public static final String description = "Turn off the light when you don't need it, so you save energy (Press the light switches to turn off the light)";
 
     public Game2() {
         filterPanel = pm.getFilter();

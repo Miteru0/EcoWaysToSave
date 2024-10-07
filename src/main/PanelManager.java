@@ -47,6 +47,10 @@ public enum PanelManager {
         window.setScene(index);
     }
 
+    public void setSceneDescription(int index) {
+        window.setSceneDescription(index);
+    }
+
     public JPanel getPanel(int index) {
         switch (index) {
             case 0:
@@ -57,6 +61,21 @@ public enum PanelManager {
                 return new GamePanel(new Game2());
             case 3:
                 return new GamePanel(new Game3());
+            default:
+                return null;
+        }
+    }
+
+    public DescriptionPanel getPanelDescription(int index) {
+        switch (index) {
+            case 0:
+                return (new DescriptionPanel(Game1.description, 0));
+            case 1:
+                return (new DescriptionPanel(Game1.description, 1));
+            case 2:
+                return (new DescriptionPanel(Game2.description, 2));
+            case 3:
+                return (new DescriptionPanel(Game3.description, 3));
             default:
                 return null;
         }

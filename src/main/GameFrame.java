@@ -8,6 +8,7 @@ public class GameFrame extends JFrame implements ActionListener {
 
     public JPanel panel;
     public JPanel filter;
+    public DescriptionPanel dPanel;
     PanelManager pm = PanelManager.INSTANCE;
 
     public GameFrame() {
@@ -27,6 +28,7 @@ public class GameFrame extends JFrame implements ActionListener {
     public void setScene(int index) {
         this.remove(panel);
         this.remove(filter);
+        this.remove(dPanel);
         this.panel = pm.getPanel(index);
         if (index >= 1) {
             ((GamePanel) panel).startGameThread();
@@ -35,6 +37,15 @@ public class GameFrame extends JFrame implements ActionListener {
         this.add(filter);
         ((FilterPanel)filter).applyFilter();
         this.add(panel);
+        this.pack();
+    }
+
+    public void setSceneDescription(int index) {
+        this.remove(panel);
+        this.remove(filter);
+        this.dPanel = pm.getPanelDescription(index);
+        dPanel.startGameThread();
+        this.add(dPanel);
         this.pack();
     }
 

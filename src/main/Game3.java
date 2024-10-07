@@ -9,6 +9,7 @@ public class Game3 implements Game{
     private GamePanel gp;
     private PanelManager pm = PanelManager.INSTANCE;
     private Fire fire;
+    public static final String description = "Put out the fire after resting in the forest (click on the fire repeatedly to extinguish it";
 
 
     public Game3() {

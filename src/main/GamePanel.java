@@ -172,6 +172,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void destroyScene() {
         game = null;
         gameThread.stop();
+        gameThread = null;
     }
 
 }
