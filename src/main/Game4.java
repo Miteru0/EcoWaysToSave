@@ -18,7 +18,7 @@ public class Game4 implements Game {
     private java.awt.Point initialClick;
     private Tree tree;
     private int numberOfLumberJacks = 1;
-    public static final String description = "Do later";
+    public static final String description = "Don't let them lumberjacks cut down the tree! (Drag&Drop Lumberjacks away from the tree)";
 
     public Game4() {
     }
@@ -31,7 +31,7 @@ public class Game4 implements Game {
     @Override
     public void initiateObjects() {
         tree = new Tree(gp, 500, 300, 100, 150);
-        numberOfLumberJacks = pm.diffilcuty / 2;
+        numberOfLumberJacks = (int)pm.diffilcuty / 2;
         if (numberOfLumberJacks <= 0) { numberOfLumberJacks = 1;}
         if (numberOfLumberJacks >= 4) { numberOfLumberJacks = 4;}
         for (int i = 0; i < numberOfLumberJacks; i++) {
@@ -78,6 +78,8 @@ public class Game4 implements Game {
             if (lumberjack.isInsideObject(e.getX(), e.getY())) {
                 selectedLumberjack = lumberjack;
                 lumberjack.dragging = true;
+                lumberjack.width += 20;
+                lumberjack.height += 20;
                 initialClick = e.getPoint();
                 break;
             }
@@ -95,6 +97,8 @@ public class Game4 implements Game {
     @Override
     public void handleTouchRelease(MouseEvent e) {
         if (selectedLumberjack != null) {
+            selectedLumberjack.width -= 20;
+            selectedLumberjack.height -= 20;
             selectedLumberjack.dragging = false;
             selectedLumberjack = null;
         }

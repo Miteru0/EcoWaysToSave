@@ -31,7 +31,7 @@ public class MainMenu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (test) {
-                    pm.setSceneDescription(4);
+                    pm.setSceneDescription(1);
                 }
                 else {
                     int randomGameIndex = random.nextInt(pm.numberOfGames) + 1;

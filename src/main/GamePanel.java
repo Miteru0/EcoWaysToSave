@@ -168,7 +168,7 @@ public class GamePanel extends JPanel implements Runnable {
         if (differentTimer) {
             System.out.println("Congrats");
             filterPanel.dark = 0;
-            pm.score += 500 + (pm.diffilcuty * 50)/failed;
+            pm.score += 500 + (pm.diffilcuty * 100)/failed;
             if (pm.score > pm.maxScore) {
                 pm.maxScore = pm.score;
             }

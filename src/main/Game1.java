@@ -1,5 +1,7 @@
 package main;
 
+import entity.Aluminium;
+import entity.AluminiumTrashBin;
 import entity.Glass;
 import entity.GlassTrashBin;
 import entity.Plastic;
@@ -10,12 +12,14 @@ import java.awt.Graphics2D;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Game1 implements Game{
     private List<Trash> trashlList = new ArrayList<>();
     private List<TrashBin> binList = new ArrayList<>();
-    private int trashCount = 2;
+    private int trashCount = 3;
     private int target;
+    private Random random = new Random();
 
     private Trash selectedTrash = null;
     private java.awt.Point initialClick;
@@ -32,11 +36,69 @@ public class Game1 implements Game{
     }
 
     public void initiateObjects() {
-        trashlList.add(new Plastic(gp, 100, 450));
-        trashlList.add(new Glass(gp, 200, 450));
-        binList.add(new GlassTrashBin(gp, 250, 125));
-        binList.add(new PlasticTrashBin(gp, 500, 125));
+        int[] xy = getRandomCoordinates();
+        trashlList.add(new Plastic(gp, xy[0], 450));
+        trashlList.add(new Glass(gp, xy[1], 450));
+        trashlList.add(new Aluminium(gp, xy[2], 450));
+        xy = getRandomCoordinates();
+        binList.add(new GlassTrashBin(gp, xy[0], 125));
+        binList.add(new PlasticTrashBin(gp, xy[1], 125));
+        binList.add(new AluminiumTrashBin(gp, xy[2], 125));
     } 
+
+    public int[] getRandomCoordinates() {
+        int[] xy = new int[3];
+        switch (random.nextInt(2)) {
+            case 0:
+                xy[0] = 175;
+                switch (random.nextInt(1)) {
+                    case 0:
+                        xy[1] = 500;
+                        xy[2] = 815;
+                        break;
+                    case 1:
+                        xy[1] = 815;
+                        xy[2] = 500;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 1:
+                xy[0] = 500;
+                switch (random.nextInt(1)) {
+                case 0:
+                    xy[1] = 175;
+                    xy[2] = 815;
+                    break;
+                case 1:
+                    xy[1] = 815;
+                    xy[2] = 175;
+                    break;
+                default:
+                    break;
+            }
+
+            case 2:
+                xy[0] = 815;
+                switch (random.nextInt(1)) {
+                    case 0:
+                        xy[1] = 500;
+                        xy[2] = 175;
+                        break;
+                    case 1:
+                        xy[1] = 175;
+                        xy[2] = 500;
+                        break;
+                    default:
+                        break;
+            }
+            default:
+                break;
+        }
+        return xy;
+    }
+
     @Override
     public void handleTouch(MouseEvent e) {
         for (Trash trash : trashlList) {

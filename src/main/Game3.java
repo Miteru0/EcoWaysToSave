@@ -51,7 +51,12 @@ public class Game3 implements Game{
 
     @Override
     public void handleTouch(MouseEvent e) {
-        
+        if (fire.isInsideObject(e.getX(), e.getY())) {
+            fire.width -= pm.diffilcuty * 50;
+            fire.height -= pm.diffilcuty * 50;
+            fire.x += pm.diffilcuty * 50 / 2;
+            fire.y += pm.diffilcuty * 50 / 2;
+        }
     }
 
     @Override
@@ -60,12 +65,6 @@ public class Game3 implements Game{
 
     @Override
     public void handleTouchRelease(MouseEvent e) {
-        if (fire.isInsideObject(e.getX(), e.getY())) {
-            fire.width -= pm.diffilcuty * 50;
-            fire.height -= pm.diffilcuty * 50;
-            fire.x += pm.diffilcuty * 50 / 2;
-            fire.y += pm.diffilcuty * 50 / 2;
-        }
 
     }
 

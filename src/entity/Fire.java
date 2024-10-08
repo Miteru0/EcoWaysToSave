@@ -12,14 +12,10 @@ public class Fire extends Entity {
     private int animationFrames = 10;
     private int animation = 0;
     private int animationReverseSpeed = 5;
-    private int startWidth;
-    private int startHeight;
     PanelManager pm = PanelManager.INSTANCE;
 
     public Fire(GamePanel gp, int x, int y, int width, int height) {
         super(gp ,x, y, width, height);
-        startWidth = width;
-        startHeight = height;
         getImage("src/sprites/fire/fire0.png");
         String[] animationPaths = new String[animationFrames];
         for (int i = 0; i < animationPaths.length; i++) {
@@ -30,8 +26,7 @@ public class Fire extends Entity {
 
     @Override
     public boolean isInsideObject(int x, int y) {
-        return (x >= this.x && x <= this.x + startWidth &&
-            y >= this.y && y <= this.y + startHeight);
+        return true;
     }
 
     @Override

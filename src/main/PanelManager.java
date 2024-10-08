@@ -10,8 +10,8 @@ public enum PanelManager {
     FilterPanel filter = new FilterPanel();
     GameFrame window;
     int timer;
-    public final int diffilcutyChanger = 1;
-    public int diffilcuty = 1;
+    public final double diffilcutyChanger = 0.5;
+    public double diffilcuty = 1;
     public int score;
     public int maxScore = -1;
     public final int gameWidth = 1080;
