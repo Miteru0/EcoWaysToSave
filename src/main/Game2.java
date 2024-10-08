@@ -41,7 +41,7 @@ public class Game2 implements Game{
     public boolean goodPosition(int x, int y) {
         
         for (LightSwitch lSwitch : lightSwitches) {
-            if (lSwitch.isInsideObject(x, y)) {
+            if (lSwitch.isInsideObject(x, y, 64, 64)) {
                 return false;
             }
         }

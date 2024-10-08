@@ -11,6 +11,7 @@ import java.awt.geom.Rectangle2D;
 public class Entity extends Rectangle2D.Double{
 
     GamePanel gp;
+    public boolean dragging = false;
 
     public Entity(GamePanel gp, int x, int y, int width, int height) {
         super(x, y, width, height);
@@ -49,6 +50,17 @@ public class Entity extends Rectangle2D.Double{
             y >= this.y && y <= this.y + height);
     }
 
+    public boolean isInsideObject(Entity entity) {
+        return this.intersects(entity);
+    }
+
+    public boolean isInsideObject(int x, int y, int width, int height) {
+        if (this.intersects(x, y, width, height)) {
+            return true;
+        }
+        return false;
+    }
+
     protected void setDefaultValues() {
     }
 
@@ -58,6 +70,11 @@ public class Entity extends Rectangle2D.Double{
 
     public void draw(Graphics2D g2) {
         g2.drawImage(spriteImage, (int)x, (int)y, (int)width, (int)height, null);
+    }
+
+    public void dragging(int x, int y, int initialClickX, int initialClickY) {
+        this.x += x - initialClickX;
+        this.y += y - initialClickY;
     }
 
     public void DestroyObject() {

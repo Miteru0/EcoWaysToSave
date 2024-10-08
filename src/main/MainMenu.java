@@ -14,6 +14,7 @@ import java.awt.Color;
 public class MainMenu extends JPanel {
 
     Random random = new Random();
+    public boolean test = false;
 
     public MainMenu() {
         PanelManager pm = PanelManager.INSTANCE;
@@ -29,8 +30,13 @@ public class MainMenu extends JPanel {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int randomGameIndex = random.nextInt(pm.numberOfGames) + 1;
+                if (test) {
+                    pm.setSceneDescription(4);
+                }
+                else {
+                    int randomGameIndex = random.nextInt(pm.numberOfGames) + 1;
                 pm.setSceneDescription(randomGameIndex);
+                }
             }
         });
 

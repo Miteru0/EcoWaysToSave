@@ -110,4 +110,5 @@ public class Game1 implements Game{
             trash.draw(g2);
         }
     }
+
 }

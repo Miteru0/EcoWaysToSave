@@ -37,6 +37,21 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
     }
 
+    public GamePanel(Game game, boolean differentTimer) {
+        failed = 1;
+        this.game = game;
+        game.setGamePanel(this);
+        // Add mouse listener to handle touch input
+        addMouseListeners();
+        initiateObjects();
+        if (differentTimer) {
+            timer = new Timer(this, true);
+        }
+        this.setPreferredSize(new Dimension(pm.gameWidth, pm.gameHeight));
+        this.setBackground(Color.GRAY);
+        this.setDoubleBuffered(true);
+    }
+
     private void addMouseListeners() {
         addMouseListener(new MouseAdapter() {
             @Override
@@ -49,7 +64,6 @@ public class GamePanel extends JPanel implements Runnable {
                 handleTouchRelease(e);
             }
         });
-
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -61,6 +75,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void initiateObjects() {
         game.initiateObjects();
     }
+
 
     private void handleTouch(MouseEvent e) {
         game.handleTouch(e);
@@ -147,6 +162,20 @@ public class GamePanel extends JPanel implements Runnable {
         pm.diffilcuty += pm.diffilcutyChanger;
         pm.setScene(0);
         destroyScene();
+    }
+
+    public void win(boolean differentTimer) {
+        if (differentTimer) {
+            System.out.println("Congrats");
+            filterPanel.dark = 0;
+            pm.score += 500 + (pm.diffilcuty * 50)/failed;
+            if (pm.score > pm.maxScore) {
+                pm.maxScore = pm.score;
+            }
+            pm.diffilcuty += pm.diffilcutyChanger;
+            pm.setScene(0);
+            destroyScene();
+        }
     }
 
     public void lose() {

@@ -13,7 +13,6 @@ public class Game3 implements Game{
 
 
     public Game3() {
-        initiateObjects();
     }
 
     @Override
@@ -69,4 +68,5 @@ public class Game3 implements Game{
         }
 
     }
+
 }

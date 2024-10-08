@@ -9,24 +9,47 @@ import java.awt.Color;
 public class Timer extends Entity{
     
     PanelManager pm = PanelManager.INSTANCE;
+    boolean differentTimer = false;
 
     public Timer(GamePanel gp) {
         super(gp, 35, 35, 1000, 50);
     }
 
+    public Timer(GamePanel gp, boolean differentTimer) {
+        super(gp, 35, 35, 1000, 50);
+        this.differentTimer = differentTimer;
+    }
+
     public void update() {
-        if (width > 0) {
-            width -= pm.diffilcuty;
+        if (differentTimer) {
+            if (width > 0) {
+                width -= 2;
+            }
+            else {
+                TimesUp();
+                width = -1;
+            }
         }
         else {
-            TimesUp();
-            width = -1;
+            if (width > 0) {
+                width -= pm.diffilcuty;
+            }
+            else {
+                TimesUp();
+                width = -1;
+            }
         }
     }
 
     public void TimesUp() {
-        System.out.println("Time's up!");
-        gp.lose();
+        if (differentTimer) {
+            System.out.println("Time's up! And it's good!");
+            gp.win(true);
+        }
+        else {
+            System.out.println("Time's up!");
+            gp.lose();
+        }
     }
 
     @Override

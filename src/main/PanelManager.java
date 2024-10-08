@@ -16,7 +16,7 @@ public enum PanelManager {
     public int maxScore = -1;
     public final int gameWidth = 1080;
     public final int gameHeight = 800;
-    public final int numberOfGames = 3;
+    public final int numberOfGames = 4;
 
 
     public void start() {
@@ -61,6 +61,8 @@ public enum PanelManager {
                 return new GamePanel(new Game2());
             case 3:
                 return new GamePanel(new Game3());
+            case 4:
+                return new GamePanel(new Game4(), true);
             default:
                 return null;
         }
@@ -76,6 +78,8 @@ public enum PanelManager {
                 return (new DescriptionPanel(Game2.description, 2));
             case 3:
                 return (new DescriptionPanel(Game3.description, 3));
+            case 4:
+                return (new DescriptionPanel(Game4.description, 4));
             default:
                 return null;
         }

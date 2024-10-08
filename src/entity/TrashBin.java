@@ -33,8 +33,4 @@ public class TrashBin extends Entity {
         }
     }
 
-    public boolean isInsideObject(Trash trash) {
-        return this.intersects(trash);
-    }
-
 }
